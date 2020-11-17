@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import { getRestaurants } from './helpers/apiCall'
 
 function App() {
+
+  useEffect(() => {
+    getRestaurants()
+  });
+
   return (
     <div className="App">
       <header className="App-header">
