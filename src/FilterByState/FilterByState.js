@@ -3,12 +3,14 @@ import FilterButton from '../FilterButton/FilterButton'
 import PropTypes from 'prop-types';
 import './FilterByState.css'
 
-const FilterByState = ({ states }) => {
-  console.log(states)
-  const stateButtons = states.map((state, i) => {
+const FilterByState = ({ states, updateFilter }) => {
+
+  const stateButtons = states.map(state => {
     return <FilterButton
-      key={i}
+      key={state}
+      id={state}
       state={state}
+      updateFilter={updateFilter}
       />
   })
 
@@ -26,4 +28,5 @@ export default FilterByState
 
 FilterByState.propTypes = {
   states: PropTypes.array,
+  updateFilter: PropTypes.func,
 }
