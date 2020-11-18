@@ -1,9 +1,9 @@
 .restaurant-container {
   border: solid 1px #e2e2e2;
   display: grid;
-  grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: auto;
+  margin-top: 10px;
   width: 1000px;
 }
 
@@ -24,5 +24,6 @@
 }
 
 .cell {
+  padding: 5px;
   width: 250px;
 }
