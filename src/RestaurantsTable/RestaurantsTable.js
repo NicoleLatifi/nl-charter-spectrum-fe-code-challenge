@@ -1,9 +1,10 @@
 import React from 'react'
 import Restaurant from '../Restaurant/Restaurant'
 import PropTypes from 'prop-types';
+import './RestaurantsTable.css'
 
 const RestaurantsTable = ({ restaurants }) => {
-  const restaurantRows = restaurants.map(restaurant => {
+  const restaurantRows = restaurants.slice(0,9).map(restaurant => {
     return <Restaurant
       key={restaurant.id}
       name={restaurant.name}
@@ -18,7 +19,15 @@ const RestaurantsTable = ({ restaurants }) => {
 
   return (
     <div>
-      {restaurantRows}
+      <div className="restaurants-header-container">
+        <h2 className="name-header">Name</h2>
+        <h2 className="city-st-header">City, St</h2>
+        <h2 className="phone-header">Phone</h2>
+        <h2 className="genre-header">Genre</h2>
+      </div>
+      <div>
+        {restaurantRows}
+      </div>
     </div>
   )
 }
