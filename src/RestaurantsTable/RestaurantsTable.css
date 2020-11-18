@@ -1,7 +1,11 @@
+.table-container {
+  margin: 20px;
+}
+
 .restaurants-header-container {
   border: solid 1px #e2e2e2;
+  color: #013057;
   display: grid;
-  grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: auto;
   width: 1000px;
