@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Restaurant.css';
 
 const Restaurant = ({ name, city, state, phone, genre }) => {
   return(
-    <div >
-      <h2>{name}</h2>
-      <p>{city}, {state}</p>
-      <p>{phone}</p>
-      <p>{genre}</p>
+    <div className="restaurant-container">
+      <p className="name-cell cell">{name}</p>
+      <p className="city-state-cell cell">{city}, {state}</p>
+      <p className="phone-cell cell">{phone}</p>
+      <p className="genre-cell cell">{genre}</p>
     </div>
   )
 }
