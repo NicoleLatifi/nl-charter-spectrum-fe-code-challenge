@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import './FilterButton.css'
 
 const FilterButton = ({ state }) => {
-
   return (
-    <div></div>
+    <div>
+      <button>{state}</button>
+    </div>
   )
 }
 
