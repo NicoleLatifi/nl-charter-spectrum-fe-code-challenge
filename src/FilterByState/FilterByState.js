@@ -5,9 +5,20 @@ import './FilterByState.css'
 
 const FilterByState = ({ states }) => {
   console.log(states)
+  const stateButtons = states.map((state, i) => {
+    return <FilterButton
+      key={i}
+      state={state}
+      />
+  })
 
   return (
-    <div></div>
+    <div className="buttons-container">
+      <h3>Filter By State</h3>
+      <div className="buttons">
+        {stateButtons}
+      </div>
+    </div>
   )
 }
 
