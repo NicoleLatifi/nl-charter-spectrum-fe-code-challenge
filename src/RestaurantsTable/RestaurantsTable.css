@@ -1,0 +1,24 @@
+.restaurants-header-container {
+  border: solid 1px #e2e2e2;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: auto;
+  width: 1000px;
+}
+
+.name-header {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.city-state-header {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.phone-header {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.genre-header {
+  grid-area: 1 / 4 / 2 / 5;
+}
