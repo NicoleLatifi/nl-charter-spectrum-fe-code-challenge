@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { getRestaurants } from './helpers/apiCall';
-import RestaurantsTable from './RestaurantsTable'
+import { getRestaurants } from '../helpers/apiCall';
+import RestaurantsTable from '../RestaurantsTable/RestaurantsTable'
 
 function App() {
   const [restaurants, setRestaurants] = useState([]);
