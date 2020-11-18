@@ -1,0 +1,19 @@
+.filter-button {
+  background-color: #e2e2e2;
+  border: solid 1px #e2e2e2;
+  border-radius: 50%;
+  margin: 2px;
+  padding: 1px;
+  height: 35px;
+  width: 35px;
+}
+
+.filter-button:hover {
+  background-color: #cccccc;
+}
+
+.filter-button:active  {
+  background-color: #f66200;
+  border: 0.1rem solid #ca5f25;
+  color: #ffffff;
+}
