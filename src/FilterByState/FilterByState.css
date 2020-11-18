@@ -1,0 +1,10 @@
+.buttons-container {
+  border: solid 1px #e2e2e2;
+  height: 300px;
+  margin: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
