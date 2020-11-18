@@ -4,6 +4,12 @@ import PropTypes from 'prop-types';
 import './RestaurantsTable.css'
 
 const RestaurantsTable = ({ restaurants }) => {
+  restaurants.sort(function(a, b){
+    if(a.name < b.name) { return -1; }
+    if(a.name > b.name) { return 1; }
+    return 0;
+  })
+
   const restaurantRows = restaurants.map(restaurant => {
     return <Restaurant
       key={restaurant.id}
@@ -14,8 +20,6 @@ const RestaurantsTable = ({ restaurants }) => {
       genre={restaurant.genre.split(",").join(", ")}
       />
   })
-
-  console.log(restaurants)
 
   return (
     <div className="table-container">
