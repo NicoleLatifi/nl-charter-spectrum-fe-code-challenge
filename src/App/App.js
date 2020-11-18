@@ -20,7 +20,6 @@ function App() {
   function determineStates() {
     const allStates = []
     restaurants.forEach(restaurant => {
-      console.log("hi")
       if (!allStates.includes(restaurant.state)) {
         allStates.push(restaurant.state)
       }
@@ -34,10 +33,12 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1 className="heading">Restaurants</h1>
-      <RestaurantsTable restaurants={restaurants} />
-      <FilterByState states={states} />
+    <div>
+      <h1 className="title">Restaurants</h1>
+      <div className="table-section">
+        <RestaurantsTable restaurants={restaurants} className="table-container" />
+        <FilterByState states={states} className="filter-by-state-container" />
+      </div>
     </div>
   )
 }
