@@ -13,6 +13,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="heading">Restaurants</h1>
       <RestaurantsTable restaurants={restaurants}/>
     </div>
   )
