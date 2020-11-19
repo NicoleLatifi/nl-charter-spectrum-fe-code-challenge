@@ -2,8 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { getRestaurants } from '../helpers/apiCall';
 import RestaurantsTable from '../RestaurantsTable/RestaurantsTable';
-import FilterByState from '../FilterByState/FilterByState';
-import FilterByGenre from '../FilterByGenre/FilterByGenre';
+import FilterByType from '../FilterByType/FilterByType';
 
 function App() {
   const [restaurants, setRestaurants] = useState([])
@@ -96,9 +95,22 @@ function App() {
     <div>
       <h1 className="title">Restaurants</h1>
       <div className="table-section">
-        <RestaurantsTable restaurantsToDisplay={restaurantsToDisplay} className="table-container" />
-        <FilterByState states={states} updateSelected={updateSelected} className="filter-by-state-container"/>
-        <FilterByGenre genres={genres} updateSelected={updateSelected} className="filter-by-genre-container"/>
+        <RestaurantsTable 
+          restaurantsToDisplay={restaurantsToDisplay} 
+          className="table-container" 
+        />
+        <FilterByType 
+          itemsList={states} 
+          updateSelected={updateSelected} 
+          type="state" 
+          className="filter-by-state-container" 
+        /> 
+        <FilterByType 
+        itemsList={genres} 
+        updateSelected={updateSelected} 
+        type="genre" 
+        className="filter-by-genre-container" 
+        />
       </div>
     </div>
   )
