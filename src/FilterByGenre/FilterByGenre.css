@@ -1,11 +1,11 @@
-.buttons-container {
+.genre-buttons-container {
   border: solid 1px #e2e2e2;
-  height: 200px;
+  height: 300px;
   margin: 20px;
   width: 300px;
 }
 
-.buttons {
+.genre-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
