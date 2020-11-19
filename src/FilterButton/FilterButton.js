@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import './FilterButton.css'
 
-const FilterButton = ({ name, updateStatesSelected, type }) => {
+const FilterButton = ({ name, updateSelected, type }) => {
   const [isSelected, setIsSelected] = useState(false)
 
   const handleClick = (event) => {
-    updateStatesSelected(event.target.innerText, !isSelected)
+    console.log(updateSelected)
+    updateSelected(event.target.innerText, !isSelected)
     setIsSelected(!isSelected)
   }
 
@@ -21,6 +22,6 @@ export default FilterButton
 
 FilterButton.propTypes = {
   state: PropTypes.string,
-  updateStatesSelected: PropTypes.func,
+  updateSelected: PropTypes.func,
   type: PropTypes.string,
 }
