@@ -29,5 +29,5 @@ export default FilterByState
 
 FilterByState.propTypes = {
   states: PropTypes.array,
-  updateStatesSelected: PropTypes.func,
+  updateSelected: PropTypes.func,
 }

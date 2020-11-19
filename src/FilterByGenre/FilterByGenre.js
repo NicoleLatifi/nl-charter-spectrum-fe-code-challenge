@@ -29,5 +29,5 @@ export default FilterByGenre
 
 FilterByGenre.propTypes = {
   genres: PropTypes.array,
-  updateGenresSelected: PropTypes.func,
+  updateSelected: PropTypes.func,
 }
