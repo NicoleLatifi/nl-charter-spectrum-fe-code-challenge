@@ -5,8 +5,10 @@ import RestaurantsTable from '../RestaurantsTable/RestaurantsTable';
 import FilterByState from '../FilterByState/FilterByState';
 
 function App() {
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState([])
   const [states, setStates] = useState([])
+  const [statesSelected, setStatesSelected] = useState([])
+  const [restaurantsToDisplay, setRestaurantsToDisplay] = useState([])
 
   useEffect(() => {
     getRestaurants()
@@ -14,8 +16,16 @@ function App() {
   }, [])
 
   useEffect(() => {
+    setRestaurantsToDisplay(restaurants)
+  }, [restaurants])
+
+  useEffect(() => {
     determineStates()
   }, [restaurants])
+
+  useEffect(() => {
+    filterRestaurants()
+  }, [statesSelected])
 
   function determineStates() {
     const allStates = []
@@ -32,12 +42,24 @@ function App() {
     setStates(allStates)
   }
 
+  const filterRestaurants = () => {
+    const filteredRestaurants = restaurants.filter(restaurant => {
+      return statesSelected.includes(restaurant.state)
+    })
+    setRestaurantsToDisplay(filteredRestaurants)
+  }
+
+  const addToStatesSelected = (state) => {
+    setStatesSelected([...statesSelected, state])
+    console.log(statesSelected)
+  }
+
   return (
     <div>
       <h1 className="title">Restaurants</h1>
       <div className="table-section">
-        <RestaurantsTable restaurants={restaurants} className="table-container" />
-        <FilterByState states={states} className="filter-by-state-container" />
+        <RestaurantsTable restaurantsToDisplay={restaurantsToDisplay} statesSelected={statesSelected} className="table-container" />
+        <FilterByState states={states} addToStatesSelected={addToStatesSelected} className="filter-by-state-container"/>
       </div>
     </div>
   )
