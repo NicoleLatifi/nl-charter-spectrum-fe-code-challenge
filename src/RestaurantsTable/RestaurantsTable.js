@@ -3,7 +3,7 @@ import Restaurant from '../Restaurant/Restaurant'
 import PropTypes from 'prop-types';
 import './RestaurantsTable.css'
 
-const RestaurantsTable = ({ restaurantsToDisplay, statesSelected }) => {
+const RestaurantsTable = ({ restaurantsToDisplay }) => {
   restaurantsToDisplay.sort(function(a, b){
     if(a.name < b.name) { return -1; }
     if(a.name > b.name) { return 1; }
