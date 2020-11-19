@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import './FilterButton.css'
 
-const FilterButton = ({ state, updateStatesSelected }) => {
+const FilterButton = ({ name, updateStatesSelected, type }) => {
   const [isSelected, setIsSelected] = useState(false)
 
   const handleClick = (event) => {
@@ -12,7 +12,7 @@ const FilterButton = ({ state, updateStatesSelected }) => {
 
   return (
     <div>
-      <button className={isSelected ? "active-filter-button" : "filter-button"} onClick={handleClick}>{state}</button>
+      <button id={type} className={isSelected ? "active-filter-button" : "filter-button"} onClick={handleClick}>{name}</button>
     </div>
   )
 }
@@ -22,4 +22,5 @@ export default FilterButton
 FilterButton.propTypes = {
   state: PropTypes.string,
   updateStatesSelected: PropTypes.func,
+  type: PropTypes.string,
 }
