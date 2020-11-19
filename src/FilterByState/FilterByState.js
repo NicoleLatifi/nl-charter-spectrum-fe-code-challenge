@@ -9,8 +9,9 @@ const FilterByState = ({ states, updateStatesSelected }) => {
     return <FilterButton
       key={state}
       id={state}
-      state={state}
+      name={state}
       updateStatesSelected={updateStatesSelected}
+      type="state"
       />
   })
 
