@@ -1,8 +1,9 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { getRestaurants } from '../helpers/apiCall';
 import RestaurantsTable from '../RestaurantsTable/RestaurantsTable';
 import FilterByType from '../FilterByType/FilterByType';
+import { getRestaurants } from '../helpers/apiCall';
+import { alphabetizeArray } from '../helpers/helperFunctions';
 
 function App() {
   const [restaurants, setRestaurants] = useState([])
@@ -28,22 +29,18 @@ function App() {
   }, [statesSelected, genresSelected])
 
   const determineStates = () => {
-    const allStates = []
+    let allStates = []
     restaurants.forEach(restaurant => {
       if (!allStates.includes(restaurant.state)) {
         allStates.push(restaurant.state)
       }
     })
-    allStates.sort(function(a, b){
-      if(a < b) { return -1; }
-      if(a > b) { return 1; }
-      return 0;
-    })
+    allStates = alphabetizeArray(allStates)
     setStates(allStates)
   }
 
   const determineGenres = () => {
-    const allGenres = []
+    let allGenres = []
     restaurants.forEach(restaurant => {
       const genresList = restaurant.genre.split(",")
       genresList.forEach(genre => {
@@ -52,11 +49,7 @@ function App() {
         }
       })
     })
-    allGenres.sort(function(a, b){
-      if(a < b) { return -1; }
-      if(a > b) { return 1; }
-      return 0;
-    })
+    allGenres = alphabetizeArray(allGenres)
     setGenres(allGenres)
   }
   
