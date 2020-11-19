@@ -1,9 +1,9 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { getRestaurants } from '../helpers/apiCall';
 import RestaurantsTable from '../RestaurantsTable/RestaurantsTable';
-import FilterByState from '../FilterByState/FilterByState';
-import FilterByGenre from '../FilterByGenre/FilterByGenre';
+import FilterByType from '../FilterByType/FilterByType';
+import { getRestaurants } from '../helpers/apiCall';
+import { alphabetizeArray } from '../helpers/helperFunctions';
 
 function App() {
   const [restaurants, setRestaurants] = useState([])
@@ -20,45 +20,26 @@ function App() {
 
   useEffect(() => {
     setRestaurantsToDisplay(restaurants)
-    determineStates()
-    determineGenres()
+    determineItems("state")
+    determineItems("genre")
   }, [restaurants])
 
   useEffect(() => {
     filterRestaurants()
   }, [statesSelected, genresSelected])
 
-  const determineStates = () => {
-    const allStates = []
+  const determineItems = (key) => {
+    let allItems = []
     restaurants.forEach(restaurant => {
-      if (!allStates.includes(restaurant.state)) {
-        allStates.push(restaurant.state)
-      }
-    })
-    allStates.sort(function(a, b){
-      if(a < b) { return -1; }
-      if(a > b) { return 1; }
-      return 0;
-    })
-    setStates(allStates)
-  }
-
-  const determineGenres = () => {
-    const allGenres = []
-    restaurants.forEach(restaurant => {
-      const genresList = restaurant.genre.split(",")
-      genresList.forEach(genre => {
-        if (!allGenres.includes(genre)) {
-          allGenres.push(genre)
+      const itemsList = restaurant[key].split(",")
+      itemsList.forEach(genre => {
+        if (!allItems.includes(genre)) {
+          allItems.push(genre)
         }
       })
     })
-    allGenres.sort(function(a, b){
-      if(a < b) { return -1; }
-      if(a > b) { return 1; }
-      return 0;
-    })
-    setGenres(allGenres)
+    allItems = alphabetizeArray(allItems)
+    key === "state" ? setStates(allItems) : setGenres(allItems)
   }
   
   const filterRestaurants = () => {
@@ -79,25 +60,16 @@ function App() {
     }
   }
 
-  const updateStatesSelected = (stateClicked, isSelected) => {
+  const updateSelected = (type, itemClicked, isSelected) => {
+    const setSelected = type === "state" ? setStatesSelected : setGenresSelected
+    const selected = type === "state" ? statesSelected : genresSelected
     if (isSelected) {
-      setStatesSelected([...statesSelected, stateClicked])
+      setSelected([...selected, itemClicked])
     } else {
-      const updatedStates = statesSelected.filter(state => {
-        return stateClicked !== state
+      const updatedItem = selected.filter(state => {
+        return itemClicked !== state
       })
-      setStatesSelected(updatedStates)
-    }
-  }
-
-  const updateGenresSelected = (genreClicked, isSelected) => {
-    if (isSelected) {
-      setGenresSelected([...genresSelected, genreClicked])
-    } else {
-      const updatedGenres = genresSelected.filter(state => {
-        return genreClicked !== state
-      })
-      setGenresSelected(updatedGenres)
+      setSelected(updatedItem)
     }
   }
 
@@ -105,9 +77,22 @@ function App() {
     <div>
       <h1 className="title">Restaurants</h1>
       <div className="table-section">
-        <RestaurantsTable restaurantsToDisplay={restaurantsToDisplay} className="table-container" />
-        <FilterByState states={states} updateStatesSelected={updateStatesSelected} className="filter-by-state-container"/>
-        <FilterByGenre genres={genres} updateGenresSelected={updateGenresSelected} className="filter-by-genre-container"/>
+        <RestaurantsTable 
+          restaurantsToDisplay={restaurantsToDisplay} 
+          className="table-container" 
+        />
+        <FilterByType 
+          itemsList={states} 
+          updateSelected={updateSelected} 
+          type="state" 
+          className="filter-by-state-container" 
+        /> 
+        <FilterByType 
+        itemsList={genres} 
+        updateSelected={updateSelected} 
+        type="genre" 
+        className="filter-by-genre-container" 
+        />
       </div>
     </div>
   )
