@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import RestaurantsTable from '../RestaurantsTable/RestaurantsTable';
 import FilterByType from '../FilterByType/FilterByType';
 import { getRestaurants } from '../helpers/apiCall';
