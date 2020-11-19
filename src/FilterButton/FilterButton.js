@@ -6,7 +6,6 @@ const FilterButton = ({ name, updateSelected, type }) => {
   const [isSelected, setIsSelected] = useState(false)
 
   const handleClick = (event) => {
-    console.log(updateSelected)
     updateSelected(event.target.innerText, !isSelected)
     setIsSelected(!isSelected)
   }
