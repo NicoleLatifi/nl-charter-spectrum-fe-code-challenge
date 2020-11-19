@@ -20,37 +20,26 @@ function App() {
 
   useEffect(() => {
     setRestaurantsToDisplay(restaurants)
-    determineStates()
-    determineGenres()
+    determineItems("state")
+    determineItems("genre")
   }, [restaurants])
 
   useEffect(() => {
     filterRestaurants()
   }, [statesSelected, genresSelected])
 
-  const determineStates = () => {
-    let allStates = []
+  const determineItems = (key) => {
+    let allItems = []
     restaurants.forEach(restaurant => {
-      if (!allStates.includes(restaurant.state)) {
-        allStates.push(restaurant.state)
-      }
-    })
-    allStates = alphabetizeArray(allStates)
-    setStates(allStates)
-  }
-
-  const determineGenres = () => {
-    let allGenres = []
-    restaurants.forEach(restaurant => {
-      const genresList = restaurant.genre.split(",")
-      genresList.forEach(genre => {
-        if (!allGenres.includes(genre)) {
-          allGenres.push(genre)
+      const itemsList = restaurant[key].split(",")
+      itemsList.forEach(genre => {
+        if (!allItems.includes(genre)) {
+          allItems.push(genre)
         }
       })
     })
-    allGenres = alphabetizeArray(allGenres)
-    setGenres(allGenres)
+    allItems = alphabetizeArray(allItems)
+    key === "state" ? setStates(allItems) : setGenres(allItems)
   }
   
   const filterRestaurants = () => {
