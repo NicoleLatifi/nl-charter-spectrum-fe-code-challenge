@@ -10,7 +10,7 @@ const FilterByGenre = ({ genres, updateGenresSelected }) => {
       key={genre}
       id={genre}
       name={genre}
-      updateGenresSelected={updateGenresSelected}
+      updateSelected={updateGenresSelected}
       type="genre"
       />
   })

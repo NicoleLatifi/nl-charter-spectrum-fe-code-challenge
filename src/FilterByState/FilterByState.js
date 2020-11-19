@@ -10,7 +10,7 @@ const FilterByState = ({ states, updateStatesSelected }) => {
       key={state}
       id={state}
       name={state}
-      updateStatesSelected={updateStatesSelected}
+      updateSelected={updateStatesSelected}
       type="state"
       />
   })
