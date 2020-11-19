@@ -5,11 +5,8 @@
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [License](#license)
+* [In Action](#in-action)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 
 <!-- ABOUT THE PROJECT -->
