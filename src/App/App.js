@@ -43,15 +43,26 @@ function App() {
   }
 
   const filterRestaurants = () => {
-    const filteredRestaurants = restaurants.filter(restaurant => {
-      return statesSelected.includes(restaurant.state)
-    })
-    setRestaurantsToDisplay(filteredRestaurants)
+    if (statesSelected.length > 0) {
+      const filteredRestaurants = restaurants.filter(restaurant => {
+        return statesSelected.includes(restaurant.state)
+      })
+      setRestaurantsToDisplay(filteredRestaurants)
+    } else {
+      setRestaurantsToDisplay(restaurants)
+    }
   }
 
-  const addToStatesSelected = (state) => {
-    setStatesSelected([...statesSelected, state])
-    console.log(statesSelected)
+  const updateStatesSelected = (stateClicked, isSelected) => {
+    if (isSelected) {
+      setStatesSelected([...statesSelected, stateClicked])
+      console.log(statesSelected)
+    } else {
+      const updatedStates = statesSelected.filter(state => {
+        return stateClicked !== state
+      })
+      setStatesSelected(updatedStates)
+    }
   }
 
   return (
@@ -59,7 +70,7 @@ function App() {
       <h1 className="title">Restaurants</h1>
       <div className="table-section">
         <RestaurantsTable restaurantsToDisplay={restaurantsToDisplay} statesSelected={statesSelected} className="table-container" />
-        <FilterByState states={states} addToStatesSelected={addToStatesSelected} className="filter-by-state-container"/>
+        <FilterByState states={states} updateStatesSelected={updateStatesSelected} className="filter-by-state-container"/>
       </div>
     </div>
   )
