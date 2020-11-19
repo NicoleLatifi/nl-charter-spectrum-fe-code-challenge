@@ -30,4 +30,5 @@ export default FilterByType
 FilterByType.propTypes = {
   itemsList: PropTypes.array,
   updateSelected: PropTypes.func,
+  type: PropTypes.string,
 }
