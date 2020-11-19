@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import Restaurant from '../Restaurant/Restaurant'
 import PropTypes from 'prop-types';
 import { alphabetizeArrayOfObject } from '../helpers/helperFunctions';
