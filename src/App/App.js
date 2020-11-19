@@ -79,25 +79,16 @@ function App() {
     }
   }
 
-  const updateStatesSelected = (stateClicked, isSelected) => {
+  const updateSelected = (type, itemClicked, isSelected) => {
+    const setSelected = type === "state" ? setStatesSelected : setGenresSelected
+    const selected = type === "state" ? statesSelected : genresSelected
     if (isSelected) {
-      setStatesSelected([...statesSelected, stateClicked])
+      setSelected([...selected, itemClicked])
     } else {
-      const updatedStates = statesSelected.filter(state => {
-        return stateClicked !== state
+      const updatedItem = selected.filter(state => {
+        return itemClicked !== state
       })
-      setStatesSelected(updatedStates)
-    }
-  }
-
-  const updateGenresSelected = (genreClicked, isSelected) => {
-    if (isSelected) {
-      setGenresSelected([...genresSelected, genreClicked])
-    } else {
-      const updatedGenres = genresSelected.filter(state => {
-        return genreClicked !== state
-      })
-      setGenresSelected(updatedGenres)
+      setSelected(updatedItem)
     }
   }
 
@@ -106,8 +97,8 @@ function App() {
       <h1 className="title">Restaurants</h1>
       <div className="table-section">
         <RestaurantsTable restaurantsToDisplay={restaurantsToDisplay} className="table-container" />
-        <FilterByState states={states} updateStatesSelected={updateStatesSelected} className="filter-by-state-container"/>
-        <FilterByGenre genres={genres} updateGenresSelected={updateGenresSelected} className="filter-by-genre-container"/>
+        <FilterByState states={states} updateSelected={updateSelected} className="filter-by-state-container"/>
+        <FilterByGenre genres={genres} updateSelected={updateSelected} className="filter-by-genre-container"/>
       </div>
     </div>
   )
