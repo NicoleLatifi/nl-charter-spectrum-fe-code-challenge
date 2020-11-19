@@ -1,6 +1,6 @@
 .buttons-container {
   border: solid 1px #e2e2e2;
-  height: 300px;
+  height: 200px;
   margin: 20px;
   width: 300px;
 }
@@ -8,4 +8,5 @@
 .buttons {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
