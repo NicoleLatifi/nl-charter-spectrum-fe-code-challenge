@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Restaurant from '../Restaurant/Restaurant'
 import PropTypes from 'prop-types';
-import { alphabetizeObject } from '../helpers/helperFunctions';
+import { alphabetizeArrayOfObject } from '../helpers/helperFunctions';
 import './RestaurantsTable.css'
 
 const RestaurantsTable = ({ restaurantsToDisplay }) => {
-  // restaurantsToDisplay.sort(function(a, b){
-  //   if(a.name < b.name) { return -1; }
-  //   if(a.name > b.name) { return 1; }
-  //   return 0
-  // })
-
-  restaurantsToDisplay = alphabetizeObject(restaurantsToDisplay, "name")
+  restaurantsToDisplay = alphabetizeArrayOfObject(restaurantsToDisplay, "name")
 
   const restaurantRows = restaurantsToDisplay.map(restaurant => {
     return <Restaurant
