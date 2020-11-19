@@ -7,7 +7,7 @@ export const alphabetizeArray = (list) => {
   return list
 }
 
-export const alphabetizeObject = (list, key) => {
+export const alphabetizeArrayOfObject = (list, key) => {
   list.sort(function(a, b){
     if(a[key] < b[key]) { return -1; }
     if(a[key] > b[key]) { return 1; }
