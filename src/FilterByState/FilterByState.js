@@ -3,14 +3,14 @@ import FilterButton from '../FilterButton/FilterButton'
 import PropTypes from 'prop-types';
 import './FilterByState.css'
 
-const FilterByState = ({ states, updateStatesSelected }) => {
+const FilterByState = ({ states, updateSelected }) => {
 
   const stateButtons = states.map(state => {
     return <FilterButton
       key={state}
       id={state}
       name={state}
-      updateSelected={updateStatesSelected}
+      updateSelected={updateSelected}
       type="state"
       />
   })

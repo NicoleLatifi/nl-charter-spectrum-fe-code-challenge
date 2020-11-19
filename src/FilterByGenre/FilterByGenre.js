@@ -3,14 +3,14 @@ import FilterButton from '../FilterButton/FilterButton'
 import PropTypes from 'prop-types';
 import './FilterByGenre.css'
 
-const FilterByGenre = ({ genres, updateGenresSelected }) => {
+const FilterByGenre = ({ genres, updateSelected }) => {
 
   const genreButtons = genres.map(genre => {
     return <FilterButton
       key={genre}
       id={genre}
       name={genre}
-      updateSelected={updateGenresSelected}
+      updateSelected={updateSelected}
       type="genre"
       />
   })
