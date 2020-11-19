@@ -1,9 +1,15 @@
-button {
+#state {
   border-radius: 50%;
   margin: 2px;
   padding: 1px;
   height: 35px;
   width: 35px;
+}
+
+#genre {
+  border-radius: 10%;
+  margin: 2px;
+  padding: 3px;
 }
 
 .filter-button {
