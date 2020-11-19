@@ -1,4 +1,19 @@
-.heading {
+.title {
   color: #013057;
   text-align: center;
+  margin-bottom: 10px;
+}
+
+.table-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.table-container {
+  grid-area: 1 / 1 / 3 / 2;
+}
+
+.filter-by-state-container {
+  grid-area: 1 / 2 / 2 / 3;
 }
