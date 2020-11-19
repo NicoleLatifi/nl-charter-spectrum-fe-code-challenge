@@ -9,9 +9,9 @@ function App() {
   const [restaurants, setRestaurants] = useState([])
   const [restaurantsToDisplay, setRestaurantsToDisplay] = useState([])
   const [states, setStates] = useState([])
-  const [statesSelected, setStatesSelected] = useState([])
+  const [statesSelected, setStatesSelected] = useState(states)
   const [genres, setGenres] = useState([])
-  const [genresSelected, setGenresSelected] = useState([])
+  const [genresSelected, setGenresSelected] = useState(genres)
 
   useEffect(() => {
     getRestaurants()
@@ -20,16 +20,13 @@ function App() {
 
   useEffect(() => {
     setRestaurantsToDisplay(restaurants)
-  }, [restaurants])
-
-  useEffect(() => {
     determineStates()
     determineGenres()
   }, [restaurants])
 
   useEffect(() => {
     filterRestaurants()
-  }, [statesSelected])
+  }, [statesSelected, genresSelected])
 
   const determineStates = () => {
     const allStates = []
@@ -63,11 +60,18 @@ function App() {
     })
     setGenres(allGenres)
   }
-
+  
   const filterRestaurants = () => {
-    if (statesSelected.length > 0) {
+    if (statesSelected.length > 0 || genresSelected.length > 0) {
       const filteredRestaurants = restaurants.filter(restaurant => {
-        return statesSelected.includes(restaurant.state)
+        let matchesGenre = false
+        const restaurantGenreList = restaurant.genre.split(",")
+        restaurantGenreList.forEach(genre => {
+          if (genresSelected.includes(genre)) {
+            matchesGenre = true
+          }
+        })
+        return statesSelected.includes(restaurant.state) || matchesGenre
       })
       setRestaurantsToDisplay(filteredRestaurants)
     } else {
@@ -86,17 +90,24 @@ function App() {
     }
   }
 
-  const updategenresSelected = () => {
-    console.log("update genre")
+  const updateGenresSelected = (genreClicked, isSelected) => {
+    if (isSelected) {
+      setGenresSelected([...genresSelected, genreClicked])
+    } else {
+      const updatedGenres = genresSelected.filter(state => {
+        return genreClicked !== state
+      })
+      setGenresSelected(updatedGenres)
+    }
   }
 
   return (
     <div>
       <h1 className="title">Restaurants</h1>
       <div className="table-section">
-        <RestaurantsTable restaurantsToDisplay={restaurantsToDisplay} statesSelected={statesSelected} className="table-container" />
+        <RestaurantsTable restaurantsToDisplay={restaurantsToDisplay} className="table-container" />
         <FilterByState states={states} updateStatesSelected={updateStatesSelected} className="filter-by-state-container"/>
-        <FilterByGenre genres={genres} updategenresSelected={updategenresSelected} className="filter-by-genre-container"/>
+        <FilterByGenre genres={genres} updateGenresSelected={updateGenresSelected} className="filter-by-genre-container"/>
       </div>
     </div>
   )
