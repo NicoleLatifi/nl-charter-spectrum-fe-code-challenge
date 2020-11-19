@@ -56,7 +56,6 @@ function App() {
   const updateStatesSelected = (stateClicked, isSelected) => {
     if (isSelected) {
       setStatesSelected([...statesSelected, stateClicked])
-      console.log(statesSelected)
     } else {
       const updatedStates = statesSelected.filter(state => {
         return stateClicked !== state
